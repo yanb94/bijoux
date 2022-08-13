@@ -1,0 +1,9 @@
+{% extends '@SyliusShop/error.html.twig' %}
+
+{% block error_title_head %}{{ 'bijoux-theme.error.error'|trans({'%code%': 404}) }}{% endblock %}
+
+{% block error_title %}{{ 'bijoux-theme.error.error'|trans({'%code%': 404}) }}{% endblock %}
+
+{% block error_content %}
+    {{ 'sylius.ui.the_page_you_are_looking_for_does_not_exist'|trans }}
+{% endblock %}

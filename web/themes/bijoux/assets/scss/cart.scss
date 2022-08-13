@@ -1,0 +1,34 @@
+@import "app.scss";
+
+#sylius-cart-widget-list
+{
+    background-color: $primary-color;
+    color: $secondary-color-light;
+
+    &::before
+    {
+        background-color: $primary-color;
+    }
+
+    .btn-cart
+    {
+        height: 50px;
+        font-size: 20px;
+    }
+
+    .item-product
+    {
+        font-family: $fontSubTitle;
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .total
+    {
+        font-family: $fontSubTitle;
+        font-size: 25px;
+        text-align: center;
+        line-height: 30px;
+    }
+}
+

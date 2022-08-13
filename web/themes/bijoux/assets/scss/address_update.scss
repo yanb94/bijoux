@@ -1,0 +1,42 @@
+@import "app.scss";
+
+.address_update
+{
+    background-color: $primary-color-dark;
+    width: 100%;
+    max-width: 600px;
+
+    &--cont_buttons
+    {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 20px 0;
+
+        &--btn
+        {
+            height: 50px;
+            width: 200px;
+            font-size: 20px;
+            margin-left: 10px;
+        }
+    }
+}
+
+@media(max-width: 480px)
+{
+    .address_update
+    {
+        &--cont_buttons
+        {
+            justify-content: center;
+            flex-direction: column;
+
+            &--btn
+            {
+              margin-top: 20px;  
+              margin-left: 0;  
+            }
+        }
+    }
+}

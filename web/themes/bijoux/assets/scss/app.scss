@@ -1,0 +1,40 @@
+$primary-color:#212121;
+$primary-color-light: #484848;
+$primary-color-dark: #000000;
+
+$secondary-color:#c9c9c9;
+$secondary-color-light: #fcfcfc;
+$secondary-color-dark: #989898;
+
+$fontTitle: "Pauraque-Serif-Rough-Regular";
+$fontSubTitle: "Fire Sans Extra Condensed";
+$fontBody: "Domine";
+
+$breakPointXL: 1200px;
+$breakPointL: 992px;
+$breakPointM: 768px;
+$breakPointS: 576px;
+
+$headerHeight: 100px;
+$headerHeightMobile: 50px;
+
+@font-face
+{
+    font-family: $fontTitle;
+    src: url('../font/Pauraque-Serif-Rough-Regular.ttf');
+    font-display: swap;   
+}
+
+@font-face
+{
+    font-family: $fontSubTitle;
+    src: url('../font/FiraSansExtraCondensed-Regular.ttf');
+    font-display: swap;
+}
+
+@font-face
+{
+    font-family: $fontBody;
+    src: url('../font/Domine-Regular.ttf');
+    font-display: swap;
+}

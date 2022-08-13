@@ -1,0 +1,24 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{% block content %}
+    <div class="homepage">
+        <div class="homepage--front">
+            <div class="homepage--front--image"></div>
+            <div class="homepage--front--content">
+                <div class="homepage--front--content--cont">
+                    <h1 class="homepage--front--content--cont--title">{{ sylius.channel.name }}</h1>
+                    <p class="homepage--front--content--cont--catchphrase">{{ "sylius.homepage.catch_phrase"|trans }}</p>
+                    <div class="homepage--front--content--cont--buttons">
+                        <a href="{{ path('list_product') }}" class="btn-secondary homepage--front--content--cont--buttons--button">
+                            {{ "sylius.homepage.our_bijoux"|trans }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="homepage--products">
+            <h2 class="homepage--products--title">{{ "sylius.homepage.our_products"|trans }}</h2>
+            {{ render(url('sylius_shop_partial_product_index_latest', {'count': pagination_home, 'template': '@SyliusShop/Homepage/_list.html.twig'})) }}
+        </div>
+    </div>
+{% endblock %}

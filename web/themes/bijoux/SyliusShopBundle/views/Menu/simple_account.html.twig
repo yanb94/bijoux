@@ -1,0 +1,32 @@
+{% extends 'knp_menu.html.twig' %}
+
+{% block root %}
+    <div>
+        <div class="header">{{ item.label|trans }}</div>
+        <hr>
+        {{ block('list') }}
+        {# <div class="button">
+            <i class="icon arrow right"></i>
+        </div> #}
+    </div>
+{% endblock %}
+
+{% block list %}
+    <div class="list">
+        {% for item in item.children %}
+            {{ block('item') }}
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block item %}
+    <a class="item" href="{{ item.uri }}">
+        {{ block('icon') }}
+        {{ item.label|trans }}
+    </a>
+{% endblock %}
+
+{% block icon %}
+    {% set icon = item.labelAttribute('icon') %}
+    {% if icon %}<i class="icon {{ icon }}"></i> {% endif %}
+{% endblock %}

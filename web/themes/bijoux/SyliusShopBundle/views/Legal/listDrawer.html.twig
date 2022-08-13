@@ -1,0 +1,7 @@
+{% for legal in legals %}
+    <div class="drawer--list--item">
+        <a href="{{ path('app_legal_show',{'slug': legal.slug}) }}">
+           {{legal.titleList}}
+        </a>
+    </div>
+{% endfor %}

@@ -1,0 +1,19 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{% block metatags %}
+
+{% endblock %}
+
+{% block title %} {% block error_title_head %}Erreur{% endblock %} | {{ parent() }}{% endblock %}
+
+{% block content %}
+    <div class="error_page">
+        <h1 class="error_page--title">{% block error_title %}Erreur{% endblock %}</h1>
+        <h2 class="error_page--msg">
+            {% block error_content %}
+                {{ 'sylius.ui.unexpected_error_occurred'|trans }}
+            {% endblock %}
+        </h2>
+        <a class="btn-secondary error_page--btn" href="{{ path('list_product') }}">{{ 'bijoux-theme.error.continue'|trans }}</a>
+    </div>
+{% endblock %}

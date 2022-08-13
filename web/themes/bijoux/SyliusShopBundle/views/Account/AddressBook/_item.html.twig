@@ -1,0 +1,30 @@
+{% import '@SyliusUi/Macro/buttons.html.twig' as buttons %}
+{% import _self as b %}
+
+{% macro delete(url, message, labeled = true, resourceId = null) %}
+    <form action="{{ url }}" method="post">
+        <input type="hidden" name="_method" value="DELETE">
+        <button class="btn-secondary default_address--cont--grid--right--btn" type="submit" data-requires-confirmation {{ sylius_test_html_attribute('delete-button') }}>
+            <i class="icon trash"></i> {{ ((message is empty and labeled) ? 'sylius.ui.delete' : message)|trans }}
+        </button>
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token(resourceId) }}" />
+    </form>
+{% endmacro %}
+
+<div class="other_address">
+    <div class="other_address--cont">
+        <div class="other_address--cont--grid" {{ sylius_test_html_attribute('address', "%s %s"|format(address.firstName, address.lastName)) }}>
+            <div class="other_address--cont--grid--left">
+                {% include '@SyliusShop/Common/_address.html.twig' with {'address': address} %}
+            </div>
+            <div class="other_address--cont--grid--right">
+                <div class="">
+                    <a class="btn-primary default_address--cont--grid--right--btn" href="{{ path('sylius_shop_account_address_book_update', {'id': address.id}) }}"><i class="icon pencil"></i> {{ 'sylius.ui.edit'|trans }}</a>
+                    {# <a class="btn-primary default_address--cont--grid--right--btn" href="{{ path('sylius_shop_account_address_book_set_as_default', {'id': address.id}) }}"></a> #}
+                    {{ render(path('sylius_shop_account_address_book_set_as_default', {'id': address.id})) }}
+                    {{ b.delete(path('sylius_shop_account_address_book_delete', {'id': address.id}), null, true, address.id) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

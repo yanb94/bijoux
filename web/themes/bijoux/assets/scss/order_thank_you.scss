@@ -1,0 +1,52 @@
+@import "app.scss";
+
+.order_thank_you
+{
+    background-color: $primary-color-dark;
+    color: $secondary-color-light;
+    min-height: calc(100vh -  #{$headerHeight});
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--title
+    {
+        color: $secondary-color-light;
+        font-size: 40px;
+        font-family: $fontSubTitle;
+        text-align: center;
+    }
+
+    &--subtitle
+    {
+        font-size: 25px;
+        margin-top: 15px;
+    }
+
+    &--btn
+    {
+        height: 60px;
+        font-size: 25px;
+        width: 250px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    &--btn_multiple
+    {
+        height: 80px;
+        font-size: 25px;
+        
+        &:nth-of-type(1)
+        {
+            margin-bottom: 20px;
+        }
+    }
+
+    &--instruction
+    {
+        color: $primary-color-dark;
+        font-family: $fontBody;
+    }
+}

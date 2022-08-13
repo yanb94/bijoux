@@ -1,0 +1,62 @@
+sylius_paypal_webhook:
+    resource: "@SyliusPayPalPlugin/Resources/config/webhook_routing.yaml"
+
+sylius_shop_partial_cart_add_item_ajax:
+    path: /add-item
+    methods: [POST]
+    defaults:
+        _controller: sylius.controller.order_item:addAjaxAction
+        _sylius:
+            template: $template
+            factory:
+                method: createForProduct
+                arguments: [expr:notFoundOnNull(service('sylius.repository.product').find($productId))]
+            form:
+                type: Sylius\Bundle\CoreBundle\Form\Type\Order\AddToCartType
+                options:
+                    product: expr:notFoundOnNull(service('sylius.repository.product').find($productId))
+
+sylius_shop_ajax_cart_item_remove_ajax:
+    path: /{id}/remove
+    methods: [DELETE]
+    defaults:
+        _controller: sylius.controller.order_item:removeAction
+        _format: json
+
+sylius_shop_cart_summary_list:
+    path: /partial/cart-list
+    defaults:
+        _controller: sylius.controller.order:widgetListAction
+
+app_admin_legal:
+    resource: |
+        alias: app.legal
+        section: admin
+        path: admin/legal
+        templates: "@SyliusAdmin\\Crud"
+        redirect: update
+        grid: app_admin_legal
+        vars:
+            all:
+                subheader: app.ui.legal_manage
+            index:
+                icon: 'file image outline'
+    type: sylius.resource
+
+app_legal_show:
+    path: /{_locale}/legal/{slug}
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.shop.legal:showAction
+
+app_static_page_about:
+    path: /{_locale}/about
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.shop.static_page:aboutAction
+
+list_product:
+    path: /{_locale}/list_product
+    methods: ['GET']
+    defaults:
+        _controller: sylius.controller.shop.list_product:listAction

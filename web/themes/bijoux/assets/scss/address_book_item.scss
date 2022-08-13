@@ -1,0 +1,122 @@
+@import "app.scss";
+
+.default_address
+{
+    width: 100%;
+    margin-top: 20px;
+
+    &--header
+    {
+        font-size: 20px;
+        font-family: $fontSubTitle;
+        padding: 10px;
+        background-color: $primary-color-light;
+    }
+
+    &--cont
+    {
+        background-color: $secondary-color-light;
+        padding: 20px;
+
+        address
+        {
+            color: $primary-color-dark;
+        }
+
+        &--grid
+        {
+            display: grid;
+            grid-template-columns: auto 200px;
+
+            &--right
+            {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+
+                &--btn
+                {
+                    height: 40px;
+                    margin-bottom: 10px;
+                    width: 150px;
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+}
+
+.other_address
+{
+    width: 100%;
+    margin-top: 20px;
+
+    &--cont
+    {
+        background-color: $secondary-color-light;
+        padding: 20px;
+
+        address
+        {
+            color: $primary-color-dark;
+        }
+
+        &--grid
+        {
+            display: grid;
+            grid-template-columns: auto 200px;
+
+            &--right
+            {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+
+                &--btn
+                {
+                    height: 40px;
+                    margin-bottom: 10px;
+                    width: 150px;
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 420px)
+{
+    .default_address
+    {
+        &--cont
+        {
+            &--grid
+            {
+                grid-template-columns: auto;
+
+                &--right
+                {
+                    justify-content: center;
+                    padding-top: 20px;
+                }
+            }
+        }
+    }
+
+    .other_address
+    {
+        &--cont
+        {
+            &--grid
+            {
+                grid-template-columns: auto;
+
+                &--right
+                {
+                    justify-content: center;
+                    padding-top: 20px;
+                }
+            }
+        }
+    }
+}

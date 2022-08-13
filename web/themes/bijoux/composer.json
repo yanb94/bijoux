@@ -1,0 +1,15 @@
+{
+    "name": "yanb94/bijoux-theme",
+    "description": "Theme of the site",
+    "authors": [
+        {
+            "name": "Yann-Elias Bellagnech",
+            "email": "20875343+yanb94@users.noreply.github.com"
+        }
+    ],
+    "extra": {
+        "sylius-theme": {
+            "title": "Bijoux Theme"
+        }
+    }
+}

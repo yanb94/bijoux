@@ -1,0 +1,122 @@
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: fr_FR
+    sylius_refund.supported_gateways: [offline, stripe]
+    nb_product_list: 8
+    container.dumper.inline_factories: true
+    stripe_public: "%env(STRIPE_PUBLIC_KEY)%"
+    stripe_private: "%env(STRIPE_PRIVATE_KEY)%"
+
+services:
+    # Default configuration for services in *this* file
+    _defaults:
+        # Automatically injects dependencies in your services
+        autowire: true
+
+        # Automatically registers your services as commands, event subscribers, etc.
+        autoconfigure: true
+
+        # Allows optimizing the container by removing unused services; this also means
+        # fetching services directly from the container via $container->get() won't work
+        public: false
+
+    _instanceof:
+        Sylius\Bundle\ResourceBundle\Controller\ResourceController:
+            autowire: false
+        Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType:
+            autowire: false
+
+    # Makes classes in src/ available to be used as services;
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: "../src/*"
+        exclude: "../src/{Entity,Migrations,Tests,Kernel.php}"
+
+    # Controllers are imported separately to make sure services can be injected
+    # as action arguments even if you don't extend any base controller class
+    App\Controller\:
+        resource: "../src/Controller"
+        tags: ["controller.service_arguments"]
+
+    App\Controller\OrderItemAjaxController:
+        autowire: false
+
+    App\Controller\OrderController:
+        autowire: false
+
+    app.form.extension.type.contact:
+        class: App\Form\Type\ContactType
+        tags:
+            - {
+                  name: form.type_extension,
+                  extended_type: Sylius\Bundle\CoreBundle\Form\Type\ContactType,
+              }
+
+    app.form.legal.type:
+        class: App\Form\LegalType
+        tags:
+            - { name: form.type }
+
+    app.listener.admin.menu_builder:
+        class: App\Menu\AdminMenuListener
+        tags:
+            - {
+                  name: kernel.event_listener,
+                  event: sylius.menu.admin.main,
+                  method: addAdminMenuItems,
+              }
+
+    sylius.controller.shop.legal:
+        class: App\Controller\LegalController
+        arguments: ["@templating"]
+        tags: ["controller.service_arguments"]
+
+    sylius.controller.shop.static_page:
+        class: App\Controller\StaticPageController
+        arguments: ["@templating"]
+        tags: ["controller.service_arguments"]
+
+    sylius.controller.shop.list_product:
+        class: App\Controller\ListProductController
+        arguments: ["@templating"]
+        tags: ["controller.service_arguments"]
+
+    sylius_invoicing_plugin.generator.invoice_pdf_file:
+        class: Sylius\InvoicingPlugin\Generator\InvoicePdfFileGenerator
+        arguments:
+            - "@templating.engine.twig"
+            - "@knp_snappy.pdf"
+            - "@file_locator"
+            - "SyliusInvoicingPlugin/Invoice/Download/pdf.html.twig"
+            - "../templates/SyliusInvoicingPlugin/sylius-logo.png"
+
+    Sylius\RefundPlugin\Provider\RefundPaymentMethodsProviderInterface:
+        class: App\Refund\StripeRefundPayementMethodsProvider
+        arguments:
+            - "@sylius.repository.payment_method"
+
+    Sylius\RefundPlugin\Provider\RemainingTotalProvider:
+        class: App\Refund\Provider\RemainingTotalProvider
+        arguments:
+            - "@sylius.repository.order_item_unit"
+            - "@sylius.repository.adjustment"
+            - "@sylius_refund.repository.refund"
+
+    Sylius\RefundPlugin\Generator\ShipmentCreditMemoUnitGenerator:
+        class: App\Generator\ShipmentCreditMemoUnitGenerator
+        arguments:
+            - "@sylius.repository.adjustment"
+
+    App\Repository\ProductRepositoryInterface:
+        class: App\Repository\ProductRepository
+
+    SitemapPlugin\Factory\SitemapUrlFactoryInterface:
+        class: SitemapPlugin\Factory\SitemapUrlFactory
+
+    sylius.provider.cutom_sitemap:
+        class: App\Sitemap\CustomSitemapProvider
+        tags: ["sylius.sitemap_provider"]
+
+    Doctrine\Persistence\ManagerRegistry:
+        alias: "doctrine"

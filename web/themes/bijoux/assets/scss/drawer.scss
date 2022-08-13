@@ -1,0 +1,90 @@
+.drawer
+{
+    display: none;
+    position: absolute;
+    z-index: 4;
+    top: $headerHeight;
+    width: 300px;
+    transform: translateX(-300px);
+    height: calc(100vh - #{$headerHeight});
+    transition: .5s;
+    background-color: $secondary-color;
+    overflow-y: auto;
+
+    &--header
+    {
+        height: 250px;
+        background-color: $primary-color-dark;
+        color: $secondary-color-light;
+        font-family: $fontTitle;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 60px;
+    }
+
+    &--list
+    {
+        &--item
+        {
+            display: flex;
+            align-items: center;
+            font-family: $fontSubTitle;
+            margin-left: 20px;
+            font-size: 25px;
+            margin-bottom: 30px;
+
+            &:first-of-type
+            {
+                margin-top: 30px;
+            }
+        }
+    }
+}
+
+.drawer-cont
+{
+    display: none;
+    position: absolute;
+    top: $headerHeight;
+    height: calc(100vh - #{$headerHeight});
+    width: 100%;
+    z-index: 3; 
+    background-color: rgba($color: $primary-color, $alpha: .9);
+}
+
+@media(max-width: $breakPointL)
+{
+    .drawer
+    {
+        display: block;
+        &.open
+        {
+            transform: translateX(0);
+        }
+    }
+
+    .drawer-cont
+    {
+        &.open
+        {
+            display: block;
+        }
+    }
+    
+}
+
+@media(max-width: $breakPointS)
+{
+    .drawer
+    {
+        top: $headerHeightMobile;
+        height: calc(100vh - #{$headerHeightMobile});
+    }
+
+    .drawer-cont
+    {
+        top: $headerHeightMobile;
+        height: calc(100vh - #{$headerHeightMobile});
+    }
+}

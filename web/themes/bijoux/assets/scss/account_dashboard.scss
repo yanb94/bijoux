@@ -1,0 +1,39 @@
+@import "app.scss";
+
+.account_dashboard
+{
+    width: 100%;
+    max-width: 1000px;
+    color: $secondary-color-light;
+
+    &--cont_buttons
+    {
+        display: flex;
+    }
+
+    &--btn
+    {
+        height: 60px;
+        font-size: 15px;
+        width: 200px;
+        margin-right: 20px;
+    }
+}
+
+@media(max-width: 480px)
+{
+    .account_dashboard
+    {
+        &--cont_buttons
+        {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        &--btn
+        {
+            margin-right: 0;
+            margin-bottom: 20px;
+        }
+    }
+}

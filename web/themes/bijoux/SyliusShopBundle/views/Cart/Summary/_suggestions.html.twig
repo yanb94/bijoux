@@ -1,0 +1,4 @@
+<h4 class="cart_summary--title_suggest">{{ 'sylius.ui.you_may_also_like'|trans }}</h4>
+<div class="cart_summary--cont_suggest">
+    {{ render(url('sylius_shop_partial_product_index_latest', {'count': nb_suggested_cart, 'template': '@SyliusShop/Cart/Summary/_suggestList.html.twig'})) }}
+</div>

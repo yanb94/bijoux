@@ -1,0 +1,48 @@
+@import "app.scss";
+
+
+.addressbook_index
+{
+    max-width: 800px;
+    width: 100%;
+
+    &--grid
+    {
+        display: grid;
+        grid-template-columns: auto 200px;
+
+        &--button_cont
+        {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &--button
+            {
+                height: 50px;
+                width: 190px;
+                font-size: 18px;
+            }
+        }
+    }
+
+    @import "address_book_item.scss";
+}
+
+
+@media(max-width: $breakPointS)
+{
+    .addressbook_index
+    {
+        &--grid
+        {
+            grid-template-columns: auto;
+
+            &--button_cont
+            {
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+        }
+    }
+}

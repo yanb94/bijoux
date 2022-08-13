@@ -1,0 +1,75 @@
+@import "app.scss";
+
+a
+{
+    &:hover
+    {
+        color: inherit;
+    }
+    color: inherit;
+}
+
+.show-medium
+{
+    display: none;
+}
+
+@media(max-width:$breakPointL)
+{
+    body
+    {
+        &.open
+        {
+            height: 100vh;
+            overflow: hidden;
+        }
+    }
+}
+
+@media(max-width:$breakPointM)
+{
+    .show-medium
+    {
+        display: initial;
+    }
+}
+
+
+@import "header.scss";
+@import "footer.scss";
+@import "cart.scss";
+@import "drawer.scss";
+@import "form.scss";
+@import "flash.scss";
+@import "message.scss";
+
+@import "homepage.scss";
+@import "product_page.scss";
+@import "contact.scss";
+@import "login.scss";
+@import "forgot_password.scss";
+@import "register.scss";
+@import "legal.scss";
+@import "about.scss";
+
+@import "account_layout.scss";
+@import "account_dashboard.scss";
+@import "profil_update.scss";
+@import "change_password.scss";
+@import "address_book_index.scss";
+@import "address_create.scss";
+@import "address_update.scss";
+
+@import "account_order_index.scss";
+@import "account_order_show.scss";
+
+@import "cart_summary.scss";
+
+@import "checkout.scss";
+
+@import "order_show.scss";
+@import "order_thank_you.scss";
+
+@import "list_product_page.scss";
+
+@import "error.scss";

@@ -1,0 +1,112 @@
+@import "app.scss";
+
+.footer-layout
+{
+    background-color: $secondary-color;
+    height: 400px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+
+    &-link
+    {
+        display: flex;
+        flex-direction: column;
+        padding: 30px;
+        color: $primary-color-light;
+        margin-top: 20px;
+        padding-left: 60px;
+
+        .title
+        {
+            font-family: $fontTitle;
+            font-size: 70px;
+            margin-bottom: 40px;
+        }
+
+        .list
+        {
+            margin: 0;
+            list-style: none;
+            padding: 0;
+            font-family: $fontSubTitle;
+            font-size: 25px;
+
+            li:first-of-type
+            {
+                margin-top: 0;
+            }
+
+            li
+            {
+                margin-top: 25px;
+            }
+        }
+    }
+
+    &-contact-info
+    {
+        display: flex;
+        flex-direction: column;
+        padding: 30px;
+        color: $primary-color-light;
+        margin-top: 20px;
+        align-items: center;
+
+        .title
+        {
+            font-family: $fontTitle;
+            font-size: 50px;
+            margin-bottom: 40px;
+        }
+
+        .contact-info
+        {
+            font-family: $fontSubTitle;
+            font-size: 25px;
+            display: grid;
+            grid-template-columns: 150px auto;
+            width: 400px;
+            row-gap: 20px;
+            line-height: 30px;
+        }
+    }
+}
+
+@media(max-width: $breakPointL)
+{
+    .footer-layout
+    {
+        grid-template-columns: auto;
+
+        &-link
+        {
+            display: none;
+        }
+
+        &-contact-info
+        {
+            align-items: center;
+        }
+    }
+}
+
+@media(max-width: $breakPointS)
+{
+    .footer-layout
+    {
+        height: 300px;
+        overflow: hidden;
+        &-contact-info
+        {
+            padding: 0;
+            padding-top: 30px;
+            padding-bottom: 30px;
+            .contact-info
+            {
+                width: 90%;
+                padding: 0px;
+                grid-template-columns: 115px auto;
+            }
+        }
+    }
+}

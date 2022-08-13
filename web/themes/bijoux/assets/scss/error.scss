@@ -1,0 +1,50 @@
+@import "app.scss";
+
+.error_page
+{
+    min-height: calc(100vh - #{$headerHeight});
+    color: $secondary-color-light;
+    background-color: $primary-color-dark;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+
+    &--title
+    {
+        font-size: 80px;
+        line-height: 75px;
+        font-family: $fontTitle;
+        margin: 0;
+    }
+
+    &--msg
+    {
+        font-size: 35px;
+        font-family: $fontSubTitle;
+        margin: 0;
+    }
+
+    &--btn
+    {
+        height: 80px;
+        width: 290px;
+        margin-top: 20px;
+        font-size: 25px;
+        text-align: center;
+    }
+}
+
+@media(max-width: $breakPointS)
+{
+    .error_page
+    {
+        &--title
+        {
+            font-size: 70px;
+            line-height: 65px;
+        }
+    }
+}

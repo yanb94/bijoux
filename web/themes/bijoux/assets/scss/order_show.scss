@@ -1,0 +1,24 @@
+@import "app.scss";
+
+.order_show
+{
+    background-color: $primary-color-dark;
+    min-height: calc(100vh - #{$headerHeight});
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--cont
+    {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    &--btn
+    {
+        height: 60px;
+        width: 200px;
+        font-size: 25px;
+    }
+}

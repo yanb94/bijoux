@@ -1,0 +1,26 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{% block title %}{{ "sylius.about.about"|trans }} | {{ parent() }}{% endblock %}
+
+{% block metatags %}
+    <meta property="og:title" content="{{ 'sylius.about.about'|trans ~ " | " ~ sylius.channel.name }}">
+    <meta property="og:description" content="{{ "sylius.about.desc"|trans }}">
+    <meta name="description" content="{{ "sylius.about.desc"|trans }}">
+    <meta property="og:image" content="https://localhost/about-seo.jpg">
+    <meta property="og:type" content="page">
+    <meta property="og:url" content="{{ app.request.getSchemeAndHttpHost() ~ app.request.requestUri }}">
+{% endblock %}
+
+{% block content %}
+
+    <div class="about_page">
+        <div class="about_page--image"></div>
+        <div class="about_page--content">
+            <h1 class="about_page--content--title">{{ "sylius.about.title"|trans }}</h1>
+            <div class="about_page--content--body">
+                {{ "sylius.about.body"|trans }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{
+  "entrypoints": {
+    "bijouxTheme": {
+      "css": [
+        "/bijouxTheme/bijouxTheme.7934399b.css"
+      ],
+      "js": [
+        "/bijouxTheme/bijouxTheme.096067b0.js"
+      ]
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{% if app.session is not null and app.session.started %}
+    {% for type in ['success', 'error', 'info', 'warning'] %}
+        {% for flash in app.session.flashbag.get(type) %}
+            {% if 'error' == type %}
+                {% set result = 'negative' %}
+                {% set icon = 'remove' %}
+            {% endif %}
+            {% if 'info' == type %}
+                {% set result = 'info' %}
+                {% set icon = 'info' %}
+            {% endif %}
+            <div class="{{ result|default('positive') }} message bijoux-flash-message">
+                <i class="close icon bijoux-flash-message--close"></i>
+                <div class="bijoux-flash-message--content">
+                    <i class="{{ icon|default('checkmark') }} icon bijoux-flash-message--content--icon"></i>
+                    <div class="bijoux-flash-message--content--content">
+                        <div class="bijoux-flash-message--content--content--header">
+                            {% set header = 'sylius.ui.'~type %}
+                            {{ header|trans }}
+                        </div>
+                        <p class="bijoux-flash-message--content--content--body" {{ sylius_test_html_attribute('flash-messages') }}>
+                        {% if flash is iterable %}
+                            {{ flash.message|trans(flash.parameters, 'flashes') }}
+                        {% else %}
+                            {{ flash|trans({}, 'flashes') }}
+                        {% endif %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% endfor %}
+{% endif %}

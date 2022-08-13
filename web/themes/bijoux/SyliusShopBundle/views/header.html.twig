@@ -1,0 +1,28 @@
+<header class="header-layout">
+    <div class="drawer-button-cont">
+        <div id="drawer-button" class="drawer-button">
+            <i class="bars icon"></i>
+        </div>
+    </div>
+    <div class="logo">
+        <a href="{{ path('sylius_shop_homepage') }}">
+            {{ sylius.channel.name }}
+        </a>
+    </div>
+    <nav class="header-layout-nav">
+        <ul>
+            <li><a href="{{ path('sylius_shop_homepage') }}">{{ 'bijoux-theme.layout.header.menu.home'|trans }}</a></li>
+            <li><a href="{{ path('list_product') }}">{{ 'bijoux-theme.layout.header.menu.products'|trans }}</a></li>
+            {% if is_granted('ROLE_USER') %}
+                <li><a href="{{ path('sylius_shop_account_dashboard') }}" class="item">{{ 'sylius.ui.my_account'|trans }}</a></li>
+                <li><a href="{{ path('sylius_shop_logout') }}" class="item sylius-logout-button" {{ sylius_test_html_attribute('logout-button') }}>{{ 'sylius.ui.logout'|trans }}</a></li>
+            {% else %}
+                <li><a href="{{ path('sylius_shop_login') }}" class="item">{{ 'sylius.ui.login'|trans }}</a></li>
+                <li><a href="{{ path('sylius_shop_register') }}" class="item">{{ 'sylius.ui.register'|trans }}</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <div id="header-panier" class="header-layout-panier">
+        {{ render(url('sylius_shop_partial_cart_summary', {'template': '@SyliusShop/Cart/_widget.html.twig'})) }}
+    </div>
+</header>

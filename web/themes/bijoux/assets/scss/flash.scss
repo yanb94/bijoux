@@ -1,0 +1,54 @@
+@import "app.scss";
+
+.bijoux-flash-message
+{
+    background-color: $secondary-color-light;
+    min-height: 80px;
+    position: relative;
+    font-family: $fontSubTitle;
+
+    &--close
+    {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+
+        font-size: 25px!important;
+    }
+
+    &--content
+    {
+        display: grid;
+        grid-template-columns: 100px auto;
+        min-height: 80px;
+
+        &--icon
+        {
+            font-size: 50px!important;
+            display: flex!important;
+            align-items: center;
+            justify-content: center;
+            height: 100%!important;
+            width: 100%!important;
+        }
+
+        &--content
+        {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            &--header
+            {
+                font-weight: bold;
+                font-size: 25px;
+            }
+
+            &--body
+            {
+                margin-top: 5px;
+                font-size: 15px;
+            }
+        }
+    }
+}

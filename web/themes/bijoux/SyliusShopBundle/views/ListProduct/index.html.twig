@@ -1,0 +1,65 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{% block title %}{{ 'sylius.list_product.title'|trans }} | {{ parent()|raw }}{% endblock %}
+
+{% block metatags %}
+    <meta property="og:title" content="{{ 'sylius.list_product.title'|trans ~ " | " ~ sylius.channel.name }}">
+    <meta property="og:description" content="{{ 'sylius.list_product.desc'|trans }}">
+    <meta name="description" content="{{ 'sylius.list_product.desc'|trans }}">
+    <meta property="og:image" content="https://localhost/list_product-seo.jpg">
+    <meta property="og:type" content="page">
+    <meta property="og:url" content="{{ app.request.getSchemeAndHttpHost() ~ app.request.requestUri }}">
+{% endblock %}
+
+{% block content %}
+    <div class="list_product_page">
+        <div class="list_product_page--header">
+            <div class="list_product_page--header--background"></div>
+            <h1>{{ 'sylius.list_product.our_products'|trans }}</h1>
+            <p>{{ 'sylius.list_product.desc'|trans }}</p>
+        </div>
+        <div class="list_product_page--content">
+            <div class="list_product_page--content--menu">
+                <div class="title">Filtre</div>
+                {{ form_start(form) }}
+                
+                {# <div class="search-cont">
+                    {{ form_widget(form.search) }} <i class="icon search"></i>
+                </div> #}
+
+                <div class="section_title">Prix</div>
+
+                {{ form_row(form.price_min) }}
+                {{ form_row(form.price_max) }}
+
+                <div class="section_title second-title">Catégorie</div>
+
+                {{ form_row(form.categories) }}
+
+                <input type="submit" class="btn-secondary btn-submit" value="Recherche">
+
+                {{ form_end(form) }}
+            </div>
+            <div class="list_product_page--content--list">
+                {% for product in products %}
+                    {% include "@SyliusShop/Product/Box/_content.html.twig" %}
+                {% endfor %}
+                <div class="list_product_page--content--list--buttons">
+                    <div class="left">
+                        {% if prevPage and prevPage != 1 %}
+                            <a class="btn-secondary btn-paginate" href="{{ path(app.request.get('_route'),app.request.attributes.get('_route_params')|merge(app.request.query)|merge({'page': prevPage}) ) }}">Précédent</a>
+                        {% elseif prevPage and prevPage == 1 %}
+                            <a class="btn-secondary btn-paginate" href="{{ path(app.request.get('_route'),app.request.attributes.get('_route_params')|merge(app.request.query)|filter((v,k) => k != 'page')) }}">Précédent</a>
+                        {% endif %}
+                    </div>
+                    <div class="right">
+                        {% if nextPage %}
+                            <a class="btn-secondary btn-paginate" href="{{ path(app.request.get('_route'),app.request.attributes.get('_route_params')|merge(app.request.query)|merge({'page': nextPage}) ) }}">Suivant</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

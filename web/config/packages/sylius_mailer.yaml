@@ -1,0 +1,4 @@
+sylius_mailer:
+    sender:
+        name: Eclat
+        address: no-reply@eclat.com

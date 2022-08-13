@@ -1,0 +1,6 @@
+<h1 class="account_layout--content--title">
+    {{ 'sylius.ui.order_history'|trans }}
+</h1>
+<div class="account_layout--content--subtitle">{{ 'sylius.ui.browse_your_orders_from_the_past'|trans }}</div>
+<hr>
+{{ sylius_template_event('sylius.shop.account.order.index.header.content', {'orders': orders}) }}

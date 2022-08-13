@@ -1,0 +1,83 @@
+@import "app.scss";
+
+.btn
+{
+    font-family: $fontSubTitle;
+    font-weight: bold;
+    border-radius: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    transition: .5s;
+}
+
+.btn-secondary
+{
+    @extend .btn;
+
+    background-color: $secondary-color-light;
+    box-shadow: 2px 2px 2px $secondary-color, inset 0px 0px 2px $secondary-color;
+    color: $primary-color-dark;
+
+    &:hover
+    {
+        color: $primary-color-dark;
+        box-shadow: 1px 1px 2px $secondary-color, inset 3px 3px 2px $secondary-color;
+    }
+
+    &:active
+    {
+        box-shadow: 1px 1px 2px $secondary-color, inset 6px 6px 6px $secondary-color;
+    }
+}
+
+.btn-secondary.disabled
+{
+    color: $secondary-color;
+    box-shadow: none;
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+.btn-primary
+{
+    @extend .btn;
+
+    background-color: $primary-color-dark;
+    box-shadow: 2px 2px 2px $primary-color-light, inset 0px 0px 2px $primary-color-light;
+    color: $secondary-color-light;
+
+    &:hover
+    {
+        color: $secondary-color-light;
+        box-shadow: 1px 1px 2px $primary-color-light, inset 3px 3px 2px $primary-color-light;
+    }
+
+    &:active
+    {
+        box-shadow: 1px 1px 2px $primary-color-light, inset 6px 6px 6px $primary-color-light;
+    }
+}
+
+.btn-primary-light
+{
+    @extend .btn;
+
+    background-color: $primary-color-light;
+    color: $secondary-color-light;
+
+    box-shadow: 2px 2px 2px $secondary-color-dark, inset 0px 0px 2px $secondary-color-dark;
+
+    &:hover
+    {
+        box-shadow: 1px 1px 2px $secondary-color-dark, inset 3px 3px 2px $secondary-color-dark;
+    }
+
+    &:active
+    {
+        box-shadow: 1px 1px 2px $secondary-color-dark, inset 6px 6px 6px $secondary-color-dark;
+    }
+}

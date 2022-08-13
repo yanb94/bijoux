@@ -1,0 +1,41 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{% form_theme form '@SyliusShop/Form/theme.html.twig' %}
+
+{% block title %}{{ 'sylius.ui.contact_us'|trans }} | {{ parent() }}{% endblock %}
+
+{% block metatags %}
+    <meta property="og:title" content="{{ 'sylius.ui.contact_us'|trans ~ " | " ~ sylius.channel.name }}">
+    <meta property="og:description" content="Contacter la bijouterie Éclat">
+    <meta name="description" content="Contacter la bijouterie Éclat">
+    <meta property="og:image" content="https://localhost/contact-seo.jpg">
+    <meta property="og:type" content="page">
+    <meta property="og:url" content="{{ app.request.getSchemeAndHttpHost() ~ app.request.requestUri }}">
+{% endblock %}
+
+{% block content %}
+
+    <div class="contact_page">
+        <div class="contact_page--image">Truc</div>
+        <div class="contact_page--form">
+            <h1 class="contact_page--form--title">{{ 'sylius.ui.contact_us'|trans }}</h1>    
+            <div class="contact_page--form--cont">
+                {{ form_start(form, {'action': path('sylius_shop_contact_request'), 'attr': {'class': 'form-bijoux', 'novalidate': 'novalidate'}}) }}
+                {{ form_row(form.name, sylius_test_form_attribute('contact-name')) }}
+                {{ form_row(form.email, sylius_test_form_attribute('contact-email')) }}
+                {{ form_row(form.message, sylius_test_form_attribute('contact-message')) }}
+
+                {{ sylius_template_event('sylius.shop.contact.request.form', {'form': form}) }}
+
+                {{ form_row(form._token) }}
+                <div class="contact_page--form--cont--button">
+                    <input type="submit" class="btn-secondary" {{ sylius_test_html_attribute('send-button') }} value="{{ 'sylius.ui.send'|trans }}"/>
+                </div>
+                {{ form_end(form, {'render_rest': false}) }}
+            </div>
+
+        </div>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,51 @@
+sylius:
+  ui:
+    title: "Titre"
+    title_list: "Titre dans les listes"
+    content: "Contenu"
+    datas: "Données"
+    see_catalogue: "Voir notre catalogue"
+    discover_catalogue: "Découvrir notre catalogue"
+    error: "Erreur"
+  admin:
+    custom_doc: "Documents Personnalisés"
+    legal_doc: "Documents Légaux"
+    static_page: "Page Statique"
+  about:
+    about: A propos
+    title: Éclat
+    body: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eleifend eros a suscipit finibus. Integer quis dui ut purus pretium ultricies. Mauris ultrices nulla et tincidunt auctor. Maecenas dui ipsum, facilisis eget dictum ac, tempor in sem. Sed metus nisl, accumsan vel suscipit sit amet, mattis ut augue. Etiam non varius neque, at vehicula turpis. Sed consequat eu odio semper malesuada. Donec tempus enim in ullamcorper auctor. Suspendisse potenti. Sed felis magna, tincidunt aliquam diam et, vulputate tempor tellus.
+    desc: "La bijouterie qui réalise vos rêves"
+  list_product:
+    title: "Liste des produits"
+    our_products: "Nos produits"
+    desc: "Découvrez notre sélection de bijoux et joaillerie"
+  cart:
+    continue_click_button_below: "Pour poursuivre vos achats accéder a notre catalogue en cliquant sur le bouton ci-dessous"
+  homepage:
+    our_bijoux: "Nos bijoux"
+    our_products: "Nos Produits"
+    catch_phrase: "La bijouterie qui réalise vos rêves"
+  login:
+    login: "Se connecter"
+  register:
+    register: "S'inscrire"    
+  email:
+    contact:
+      name: "Nom"
+  refund:
+    email:
+      just_refund_order: "Nous venons d'effectuer un remboursement concernant la commande"
+      see_credit_memo: "Pour voir les détails référez-vous à la note de crédit en pièce jointes."
+      refund: "Remboursement"
+app:
+  ui:
+    legals: "Documents légaux"
+    legal_manage: "Gérer les documents légaux"
+    new_legal: "Créer un document légal"
+    edit_legal: Modifier un document légal
+    static_page: "Page Statique"
+    static_pages: "Page Statiques"
+    static_page_manage: "Gérer les pages statiques"
+    new_static_page: "Créer une page statique"
+    edit_static_page: "Modifier une page statique"

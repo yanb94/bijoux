@@ -1,0 +1,65 @@
+@import "app.scss";
+
+.list-products
+{
+    display: grid;
+    grid-template-columns:  repeat(auto-fill,500px);
+    column-gap: 50px;
+    row-gap: 50px;
+    padding: 30px;
+    justify-content: center;
+
+    &--more
+    {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 50px 0;
+
+        &--button
+        {
+            font-size: 40px;
+            font-weight: bold;
+            width: 450px;
+            height: 100px;
+            line-height: 40px;
+            text-align: center;
+        }
+    }
+}
+
+.suggest-list
+{
+    display: grid;
+    grid-template-columns:  repeat(auto-fill,320px);
+    column-gap: 50px;
+    row-gap: 50px;
+    padding: 30px;
+    justify-content: center;
+}
+
+@media(max-width: $breakPointS)
+{
+    .list-products
+    {
+        grid-template-columns:  repeat(auto-fill,320px);
+
+        &--more
+        {
+            &--button
+            {
+                width: 300px;
+                height: 100px;
+                font-size: 30px;
+                line-height: 30px;
+            }
+        }
+    }
+
+    .suggest-list
+    {
+        grid-template-columns:  repeat(auto-fill,300px);
+    }
+}
+
+@import "product-box.scss";

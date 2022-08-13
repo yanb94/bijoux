@@ -1,0 +1,16 @@
+twig:
+    paths: ['%kernel.project_dir%/templates']
+    debug: '%kernel.debug%'
+    strict_variables: '%kernel.debug%'
+    globals:
+        pagination_home: 6
+        nb_suggested_product: 4
+        nb_suggested_cart: 5
+
+services:
+    _defaults:
+        public: false
+        autowire: true
+        autoconfigure: true
+
+    Twig\Extra\Intl\IntlExtension: ~

@@ -1,0 +1,13 @@
+{% extends '@SyliusShop/Account/layout.html.twig' %}
+
+{% block title %}{{ 'sylius.ui.order'|trans }} #{{ order.number }} | {{ parent() }}{% endblock %}
+
+{% block breadcrumb %}
+    {% include '@SyliusShop/Account/Order/Show/_breadcrumb.html.twig' %}
+{% endblock %}
+
+{% block subcontent %}
+    <div class="account_order_show">
+        {{ sylius_template_event('sylius.shop.account.order.show.subcontent', _context) }}
+    </div>
+{% endblock %}

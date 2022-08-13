@@ -1,0 +1,39 @@
+{% extends '@SyliusShop/Email/layout.html.twig' %}
+
+{% block subject %}
+    {{ 'sylius.email.contact_request.subject'|trans({}, null, localeCode) }}
+{% endblock %}
+
+{% block content %}
+
+    <tr>
+        <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+            <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:20px;font-weight:800;line-height:1;text-align:left;color:#000000;">{{ 'sylius.email.contact.name'|trans({}, null, localeCode) }}</div>
+        </td>
+    </tr>
+    <tr>
+        <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+            <div style="font-family:helvetica;font-size:20px;line-height:1;text-align:left;color:#000000;">{{ data.name }}</div>
+        </td>
+    </tr>
+    <tr>
+        <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+            <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:20px;font-weight:800;line-height:1;text-align:left;color:#000000;">{{ 'sylius.email.contact_request.message_from'|trans({}, null, localeCode) }}</div>
+        </td>
+    </tr>
+    <tr>
+        <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+            <div style="font-family:helvetica;font-size:20px;line-height:1;text-align:left;color:#000000;">{{ data.email }}</div>
+        </td>
+    </tr>
+    <tr>
+        <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+            <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:20px;font-weight:800;line-height:1;text-align:left;color:#000000;">{{ 'sylius.email.contact_request.content'|trans({}, null, localeCode) }}</div>
+        </td>
+    </tr>
+    <tr>
+        <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+            <div style="font-family:helvetica;font-size:20px;line-height:1;text-align:justify;color:#000000;">{{ data.message|nl2br }}</div>
+        </td>
+    </tr>
+{% endblock %}

@@ -1,0 +1,7 @@
+sylius_resource:
+    resources:
+        app.legal:
+            driver: doctrine/orm # You can use also different driver here
+            classes:
+                model: App\Entity\Legal
+                form: App\Form\LegalType

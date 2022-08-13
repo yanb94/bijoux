@@ -1,0 +1,28 @@
+<footer id="footer-layout" class="footer-layout">
+    {# <div class="ui container">
+        {{ sylius_template_event('sylius.shop.layout.footer') }}
+    </div> #}
+    <div class="footer-layout-link">
+        <div class="title">{{ sylius.channel.name }}</div>
+        <ul class="list">
+            {{ render(controller("App\\Controller\\LegalController::listFooterAction")) }}
+            <li>
+                <a href="{{ path('sylius_shop_contact_request') }}">{{ 'bijoux-theme.layout.footer.links.contact_form'|trans }}</a>
+            </li>
+            <li>
+                <a href="{{ path('app_static_page_about') }}">{{ 'bijoux-theme.layout.footer.links.about'|trans }}</a>
+            </li>
+        </ul>
+    </div>
+    <div class="footer-layout-contact-info">
+        <div class="title">{{ 'bijoux-theme.layout.footer.contact.title'|trans }}</div>
+        <div class="contact-info">
+            <div class="label">{{ 'bijoux-theme.layout.footer.contact.phone'|trans }}</div>
+            <div class="info">01 00 00 00 00</div>
+            <div class="label">{{ 'bijoux-theme.layout.footer.contact.email'|trans }}</div>
+            <div class="info">{{ sylius.channel.contactEmail }}</div>
+            <div class="label">{{ 'bijoux-theme.layout.footer.contact.adress'|trans }}</div>
+            <div class="info">{{sylius.channel.shopBillingData.street ~", "~sylius.channel.shopBillingData.city ~ " " ~sylius.channel.shopBillingData.postcode }}</div>
+        </div>
+    </div>
+</footer>

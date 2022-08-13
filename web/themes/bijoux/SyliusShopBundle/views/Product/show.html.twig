@@ -1,0 +1,68 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{% block title %}{{ product.name }} | {{ parent() }}{% endblock %}
+
+{% block content %}
+
+    <div class="product_page__cont">
+        <div class="product_page">
+            <div class="product_page--image">
+                {% if product.imagesByType('thumbnail') is not empty %}
+                    {% set path = product.imagesByType('thumbnail').first.path|imagine_filter(filter|default('product_main_image')) %}
+                {% elseif product.images.first %}
+                    {% set path = product.images.first.path|imagine_filter(filter|default('product_main_image')) %}
+                {% else %}
+                    {% set path = '//placehold.it/440x480' %}
+                {% endif %}
+
+                <img src="{{ path }}" {{ sylius_test_html_attribute('main-image') }} alt="{{ product.name }}" class="product_page--image--show" />
+            </div>
+            <div class="product_page--info">
+                <div class="product_page--info--cont">
+                    <h1 class="product_page--info--cont--title">{{product.name}}</h1>
+                    <hr class="product_page--info--cont--divide">
+                    <div class="product_page--info--cont--price">
+                        {% include "@SyliusShop/Product/Show/_price.html.twig" %}
+                    </div>
+                    <div class="product_page--info--cont--description">
+                        {{product.description}}
+                    </div>
+                    <div class="product_page--info--cont--cont-button">
+                        <div class="btn-secondary product_page--info--cont--cont-button--buy-button btn-addCart" productId={{product.id}} token="{{ csrf_token('form') }}">
+                            Ajouter au panier
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="product_page_similar">
+        <div class="product_page_similar--title">
+            Produit Similaire
+        </div>
+        {% include "@SyliusShop/Product/Show/_associations.html.twig" %}
+    </div>
+
+
+{# {% include '@SyliusShop/Product/Show/_breadcrumb.html.twig' %} #}
+{# <div class="ui two column stackable grid">
+    <div class="column">
+        {{ sylius_template_event('sylius.shop.product.show.left_sidebar', _context) }}
+    </div>
+    <div class="column">
+        {{ sylius_template_event('sylius.shop.product.show.right_sidebar', _context) }}
+    </div>
+</div> #}
+
+{# {{ sylius_template_event('sylius.shop.product.show.content', _context) }} #}
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+
+{# <script type="text/javascript">
+    lightbox.option({
+        'albumLabel': '{{ 'sylius.lightbox.image_album_label'|trans|escape('js') }}'
+    });
+</script> #}
+{% endblock %}

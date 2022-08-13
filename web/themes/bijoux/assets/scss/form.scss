@@ -1,0 +1,129 @@
+@import "app.scss";
+
+.form-bijoux
+{
+    label
+    {
+        font-family: $fontSubTitle;
+        color: inherit;
+        font-size: 25px;
+        font-weight: bold;
+
+        &[for="_remember_me"]
+        {
+            color: inherit!important;
+        }
+
+        &.required
+        {
+            &::after
+            {
+                content: "*";
+                color: inherit;
+                margin-left: 10px;
+            }
+        }
+    }
+
+    input
+    {
+        border-radius: 5px;
+        display: block;
+        height: 45px;
+        margin-top: 10px;
+        width: 100%;
+        font-family: $fontSubTitle;
+        font-size: 20px;
+        padding: 15px;        
+    }
+
+    select
+    {
+        border-radius: 5px;
+        display: block;
+        height: 45px!important;
+        margin-top: 10px;
+        width: 100%;
+        font-family: $fontSubTitle;
+        font-size: 20px;
+        padding: 15px;
+    }
+
+    textarea
+    {
+        border-radius: 5px;
+        display: block;
+        margin-top: 10px;
+        min-height: 250px;
+        width: 100%;
+        font-family: $fontSubTitle;
+        font-size: 20px;
+        padding: 15px;
+    }
+
+    .field
+    {
+        margin-top: 20px;
+    }
+
+    .sylius-validation-error
+    {
+        background-color: $secondary-color-light;
+        color: $primary-color-dark;
+        font-size: 12px;
+        font-family: $fontBody;
+    }
+
+    .ui.toggle.checkbox input~.box, .ui.toggle.checkbox input~label
+    {
+        font-size: 20px;
+    }
+
+    .ui.toggle.checkbox input:checked~.box, .ui.toggle.checkbox input:checked~label
+    {
+        color: inherit!important;
+        font-size: 20px;
+    }
+
+    .ui.toggle.checkbox
+    {
+        min-height: 40px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .ui.toggle.checkbox .box:before, .ui.toggle.checkbox label:before,
+    .ui.toggle.checkbox input:focus~.box:before, .ui.toggle.checkbox input:focus~label:before
+    {
+        border: 2px solid $secondary-color!important;
+    }
+
+    .ui.toggle.checkbox input:checked~.box:before, .ui.toggle.checkbox input:checked~label:before
+    {
+        background-color: $secondary-color-dark!important;
+    }
+
+    .ui.toggle.checkbox .box, .ui.toggle.checkbox label
+    {
+        color: inherit!important;
+    }
+
+    .two_fields
+    {
+        display: grid;
+        grid-template-columns: repeat(2,calc(50% - 10px));
+        column-gap: 20px;
+    }
+}
+
+@media(max-width: $breakPointS)
+{
+    .form-bijoux
+    {
+        .two_fields
+        {
+            grid-template-columns: auto;
+        }
+    }   
+}

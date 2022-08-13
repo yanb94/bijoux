@@ -1,0 +1,36 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{% form_theme form '@SyliusShop/Form/theme.html.twig' %}
+
+{% import '@SyliusShop/MacroPerso/messages.html.twig' as messages %}
+
+{% set header = 'sylius.ui.your_shopping_cart' %}
+
+{% block title %}{{ header|trans }} | {{ parent() }}{% endblock %}
+
+{% block content %}
+    <div class="cart_summary">
+        {% if not cart.empty %}
+            {{ sylius_template_event('sylius.shop.cart.header', {'header': header, 'cart': cart}) }}
+            
+            <div class="cart_summary--content">
+                <div class="cart_summary--content--detail">
+                    {{ sylius_template_event('sylius.shop.cart.items', {'cart': cart, 'form': form}) }}
+                </div>
+                <div class="cart_summary--content--total">
+                    {{ sylius_template_event('sylius.shop.cart.summary', {'cart': cart}) }}
+                </div>
+            </div>
+
+            {{ sylius_template_event('sylius.shop.cart.suggestions', {'cart': cart}) }}
+        {% else %}
+            {{ messages.info('sylius.ui.your_cart_is_empty') }}
+            <div class="cart_summary--empty">
+                <div class="cart_summary--empty--msg">
+                    {{ "sylius.cart.continue_click_button_below"|trans }}
+                </div>
+                <a href="{{ path('sylius_shop_homepage') }}" class="btn-secondary cart_summary--empty--btn">{{ "sylius.ui.see_catalogue"|trans }}</a>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,165 @@
+@import "app.scss";
+
+@import "button.scss";
+@import "list-products.scss";
+
+.homepage
+{
+    &--front
+    {
+        height: calc(100vh - #{$headerHeight});
+        background-color: $primary-color-dark;
+
+        display: grid;
+        grid-template-columns: 50% 50%;
+
+        &--image
+        {
+            background-image: url('../image/homepage-front.jpg');
+            background-size: 110%;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        &--content
+        {
+            color: $secondary-color-light;
+            display: flex;
+            align-items: center;
+
+            &--cont
+            {
+                text-align: left;
+                width: 90%;
+                min-width: 450px;
+                max-width: 570px;
+                padding-left: 15%;
+                padding-bottom: 60px;
+
+                &--title
+                {
+                    font-family: $fontTitle;
+                    font-size: 90px;
+                    margin: 0;
+                    padding: 0;
+                    min-height: auto;
+                    line-height: 90px;
+                    font-weight: normal;
+                }
+
+                &--catchphrase
+                {
+                    font-family: $fontSubTitle;
+                    font-size: 30px;
+                    margin: 0;
+                    padding: 0;
+                    line-height: 30px;
+                }
+
+                &--buttons
+                {
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-end;
+
+                    padding: 30px 0;
+
+                    &--button
+                    {
+                        font-size: 30px;
+                        width: 200px;
+                        height: 50px;
+                    }
+                }
+            }
+        }
+    }
+
+    &--products
+    {
+        background-color: $primary-color;
+        padding: 30px;
+
+        &--title
+        {
+            font-family: $fontTitle;
+            font-size: 60px;
+            color: $secondary-color-light;
+        }
+    }
+}
+
+@media(max-width: $breakPointL)
+{
+    .homepage
+    {
+        &--front
+        {
+            grid-template-columns: auto;
+            grid-template-rows: 60% 40%;
+
+            &--image
+            {
+                grid-row: 2;
+            }
+
+            &--content
+            {
+                justify-content: center;
+
+                &--cont
+                {
+                    text-align: center;
+                    padding-left: 0;
+                    padding-bottom: 0;
+                    min-width: initial;
+                    max-width: initial;
+                    width: 450px;
+
+                    &--buttons
+                    {
+                        justify-content: center;
+                        // margin-top: 50px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: $breakPointS)
+{
+    .homepage
+    {
+        &--front
+        {
+            height: calc(100vh - #{$headerHeightMobile});
+
+            &--image
+            {
+                background-size: 200%;
+            }
+
+            &--content
+            {
+                &--cont
+                {
+                    width: 310px;
+
+                    &--title
+                    {
+                        font-size: 70px;
+                    }
+                }
+            }
+        }
+
+        &--products
+        {
+            &--title
+            {
+                font-size: 40px;
+            }
+        }
+    }
+}

@@ -1,0 +1,46 @@
+{% extends '@SyliusShop/Email/layout.html.twig' %}
+
+{% block subject %}
+    {{ 'sylius.email.user_registration.subject'|trans({}, null, localeCode) }}
+{% endblock %}
+
+{% block content %}
+    {% set url = channel.hostname is not null ? 'http://' ~ channel.hostname ~ path('sylius_shop_homepage', {'_locale': localeCode}) : url('sylius_shop_homepage', {'_locale': localeCode}) %}
+
+    <tr>
+        <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+            <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:20px;line-height:1;text-align:center;color:#000000;">{{ 'sylius.email.user_registration.welcome_to_our_store'|trans({}, null, localeCode) }}</div>
+        </td>
+    </tr>
+    <tr>
+        <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+            <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:15px;line-height:1;text-align:left;color:#000000;">{{ 'sylius.email.user_registration.you_have_just_been_registered'|trans({}, null, localeCode) }} {{ user.username }}</div>
+        </td>
+    </tr>
+    <tr>
+    <td align="center" vertical-align="middle" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+        <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:separate;line-height:100%;">
+            <tr>
+                <td align="center" bgcolor="#414141" role="presentation" style="border:none;border-radius:3px;cursor:auto;mso-padding-alt:10px 25px;background:#414141;" valign="middle">
+                    <a href="{{ url|raw }}">
+                        <p style="display:inline-block;background:#414141;color:#ffffff;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:25px;font-weight:normal;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:10px 25px;mso-padding-alt:0px;border-radius:3px;"> {{ 'sylius.email.user_registration.start_shopping'|trans({}, null, localeCode) }} </p>
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </td>
+    </tr>
+
+    {# <div style="text-align: center; margin-bottom: 30px;">
+        <div style="font-size: 24px;">
+            {{ 'sylius.email.user_registration.welcome_to_our_store'|trans({}, null, localeCode) }}<br>
+        </div>
+        {{ 'sylius.email.user_registration.you_have_just_been_registered'|trans({}, null, localeCode) }} {{ user.username }}.
+    </div>
+
+    <div style="text-align: center;">
+        <a href="{{ url|raw }}" style="display: inline-block; text-align: center; background: #1abb9c; padding: 18px 28px; color: #fff; text-decoration: none; border-radius: 3px;">
+            {{ 'sylius.email.user_registration.start_shopping'|trans({}, null, localeCode) }}
+        </a>
+    </div> #}
+{% endblock %}

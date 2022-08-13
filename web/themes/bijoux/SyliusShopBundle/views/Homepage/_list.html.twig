@@ -1,0 +1,17 @@
+{% if products|length == 4 %}
+    {% set columns = "two" %}
+{% endif %}
+{% if products|length == 3 %}
+    {% set columns = "three odd doubling" %}
+{% endif %}
+
+<div class="list-products">
+    {% for product in products %}
+        {% include '@SyliusShop/Product/_box.html.twig' %}
+    {% endfor %}
+</div>
+<div class="list-products--more">
+    <a href="{{ path('list_product') }}" class="btn-secondary list-products--more--button">
+        {{ "sylius.ui.discover_catalogue"|trans }}
+    </a>
+</div>

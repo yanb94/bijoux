@@ -1,0 +1,38 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{% form_theme form '@SyliusShop/Form/theme.html.twig' %}
+
+{% block title %}{{ 'sylius.ui.register_in_the_store'|trans }} | {{ parent() }}{% endblock %}
+
+{% block content %}
+    {# {% include '@SyliusShop/Register/_header.html.twig' %} #}
+
+    {# {{ sylius_template_event('sylius.shop.register.after_content_header') }} #}
+
+    <div class="register_page">
+        <div class="register_page--image"></div>
+        <div class="register_page--form">
+        
+            <h1 class="register_page--form--title">{{ 'sylius.ui.register'|trans }}</h1>
+            <hr class="register_page--form--divider">
+
+            {{ sylius_template_event('sylius.shop.register.before_form') }}
+
+            {{ form_start(form, {'action': path('sylius_shop_register'), 'attr': {'class': 'form-bijoux', 'novalidate': 'novalidate'}}) }}
+                {% include '@SyliusShop/Register/_form.html.twig' %}
+
+                {{ sylius_template_event('sylius.shop.register.form', {'form': form}) }}
+
+                <div class="register_page--form--required">
+                    * Champs obligatoire
+                </div>
+
+                <div class="register_page--form--buttons">
+                    <input type="submit" class="register_page--form--buttons--btn btn-secondary" {{ sylius_test_html_attribute('register-button') }} value)="{{ 'sylius.ui.create_an_account'|trans }}"/>
+                </div>
+            {{ form_row(form._token) }}
+            {{ form_end(form, {'render_rest': false}) }}
+
+        </div>
+    </div>
+{% endblock %}

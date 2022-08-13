@@ -1,0 +1,16 @@
+{% extends "@SyliusShop/layout.html.twig" %}
+
+{% block title %}{{ legal.name }} | {{ parent() }}{% endblock %}
+
+{% block content %}
+    <div class="legal_page">
+        <div class="legal_page--cont">
+            <h1 class="legal_page--title">
+                {{ legal.name }}
+            </h1>
+            <div class="legal_page--body">
+                {{ legal.content|raw }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

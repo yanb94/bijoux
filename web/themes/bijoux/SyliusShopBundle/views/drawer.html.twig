@@ -1,0 +1,53 @@
+<div class="drawer-cont">
+</div>
+<div class="drawer">
+    <div class="drawer--header">
+        {{ sylius.channel.name }}
+    </div>
+    <div class="drawer--list">
+        <div class="drawer--list--item">
+            <a href="{{ path('sylius_shop_homepage') }}">
+                {{ 'bijoux-theme.layout.header.menu.home'|trans }}
+            </a>
+        </div>
+        <div class="drawer--list--item">
+            <a href="{{ path('list_product') }}">
+                {{ 'bijoux-theme.layout.header.menu.products'|trans }}
+            </a>
+        </div>
+        {% if is_granted('ROLE_USER') %}
+            <div class="drawer--list--item">
+                <a href="{{ path('sylius_shop_account_dashboard') }}">
+                    {{ 'sylius.ui.my_account'|trans }}
+                </a>
+            </div>
+            <div class="drawer--list--item">
+                <a href="{{ path('sylius_shop_logout') }}">
+                    {{ 'sylius.ui.logout'|trans }}
+                </a>
+            </div>
+        {% else %}
+            <div class="drawer--list--item">
+                <a href="{{ path('sylius_shop_login') }}">
+                    {{ 'sylius.ui.login'|trans }}
+                </a>
+            </div>
+            <div class="drawer--list--item">
+                <a href="{{ path('sylius_shop_register') }}">
+                    {{ 'sylius.ui.register'|trans }}
+                </a>
+            </div>
+        {% endif %}
+        {{ render(controller("App\\Controller\\LegalController::listDrawerAction")) }}
+        <div class="drawer--list--item">
+            <a href="{{ path('sylius_shop_contact_request') }}">
+                {{ 'bijoux-theme.layout.footer.links.contact_form'|trans }}
+            </a>
+        </div>
+        <div class="drawer--list--item">
+            <a href="{{ path('app_static_page_about') }}">
+                {{ 'bijoux-theme.layout.footer.links.about'|trans }}
+            </a>
+        </div>
+    </div>
+</div>

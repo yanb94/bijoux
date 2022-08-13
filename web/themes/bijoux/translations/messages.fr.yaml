@@ -1,0 +1,23 @@
+sylius:
+  ui:
+    login: "S'identifier"
+    register: "S'inscrire"
+bijoux-theme:
+  layout:
+    header:
+      menu:
+        home: "Accueil"
+        products: "Nos Bijoux"
+    footer:
+      links:
+        contact_form: "Formulaire de contact"
+        about: "A propos"
+      contact:
+        title: "Contact"
+        phone: "Téléphone"
+        adress: "Adresse"
+        email: "Email"
+  error:
+    error: "Erreur %code%"
+    continue: "Poursuivez votre navigation"
+    

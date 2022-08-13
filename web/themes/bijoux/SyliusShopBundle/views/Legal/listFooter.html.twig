@@ -1,0 +1,5 @@
+{% for legal in legals %}
+    <li>
+        <a href="{{ path('app_legal_show',{'slug': legal.slug}) }}">{{legal.titleList}}</a>
+    </li>
+{% endfor %}

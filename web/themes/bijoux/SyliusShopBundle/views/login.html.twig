@@ -1,0 +1,23 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{% form_theme form '@SyliusShop/Form/theme.html.twig' %}
+
+{% block title %}{{ 'sylius.ui.customer_login'|trans }} | {{ parent() }}{% endblock %}
+
+{% block content %}
+    {# {% include '@SyliusShop/Login/_header.html.twig' %}
+
+    {{ sylius_template_event('sylius.shop.login.after_content_header') }} #}
+
+    <div class="login_page">
+        <div class="login_page--image"></div>
+        <div class="login_page--content">
+            <div class="login_page--content--login">
+                {{ sylius_template_event('sylius.shop.login.main_column', _context) }}
+            </div>
+            <div class="login_page--content--register">
+                {{ sylius_template_event('sylius.shop.login.register_column', _context) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
